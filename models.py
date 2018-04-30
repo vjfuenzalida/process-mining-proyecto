@@ -1,42 +1,71 @@
 class Student:
+
+    all = []
+
     def __init__(self, data):
         self.__dict__ = data
 
+    @classmethod
+    def filter_by(cls, field, value):
+        return list(filter(lambda s: getattr(s, field) == value, cls.all))
+
+
 class CourseInstance:
+
+    all = []
+
     def __init__(self, data):
         self.__dict__ = data
+
+    @classmethod
+    def filter_by(cls, field, value):
+        return list(filter(lambda s: getattr(s, field) == value, cls.all))
 
 class StudentRaw:
     all = []
+
     def __init__(self, **kwargs):
         self.rut = kwargs.get('RUT', None)
         self.student_number = kwargs.get('N°ALUMNO', None)
         self.curriculum = kwargs.get('CURRICULUM', None)
         self.program_code = kwargs.get('CODIGO PROGRAMA', None)
         self.program = kwargs.get('PROGRAMA', None)
-        self.specialty_preference_code = kwargs.get('CODIGO PREFERENCIA ESPECIALIDAD', None)
-        self.specialty_preference = kwargs.get('PREFERENCIA ESPECIALIDAD', None)
-        self.major_preference_code = kwargs.get('CODIGO PREFERENCIA MAJOR', None)
+        self.specialty_preference_code = kwargs.get(
+            'CODIGO PREFERENCIA ESPECIALIDAD', None)
+        self.specialty_preference = kwargs.get(
+            'PREFERENCIA ESPECIALIDAD', None)
+        self.major_preference_code = kwargs.get(
+            'CODIGO PREFERENCIA MAJOR', None)
         self.major_preference = kwargs.get('PREFERENCIA MAJOR', None)
-        self.selected_major_code = kwargs.get('CODIGO MAJOR SELECCIONADO', None)
+        self.selected_major_code = kwargs.get(
+            'CODIGO MAJOR SELECCIONADO', None)
         self.selected_major = kwargs.get('MAJOR SELECCIONADO', None)
-        self.selected_minor_code = kwargs.get('CODIGO MINOR SELECCIONADO', None)
+        self.selected_minor_code = kwargs.get(
+            'CODIGO MINOR SELECCIONADO', None)
         self.selected_minor = kwargs.get('MINOR SELECCIONADO', None)
         self.track = kwargs.get('TRACK/ÁREA', None)
-        self.customized_studies_plan = kwargs.get('PLAN DE ESTUDIOS PERSONALIZADO', None)
+        self.customized_studies_plan = kwargs.get(
+            'PLAN DE ESTUDIOS PERSONALIZADO', None)
         self.state = kwargs.get('ESTADO', None)
         self.admission_year = kwargs.get('AÑO INGRESO', None)
         self.admission_way = kwargs.get('VÍA DE INGRESO', None)
         self.special_admission_type = kwargs.get('TIPO INGRESO ESPECIAL', None)
         self.ppa = kwargs.get('PROM. PPA', None)
-        self.total_approved_credits = kwargs.get('TOTAL CRÉDITOS APROBADOS', None)
-        self.total_validated_credits = kwargs.get('TOTAL CRÉDITOS CONVALIDADOS', None)
-        self.total_approved_and_validated_credits = kwargs.get('TOTAL CRÉDITOS APROBADOS+CONVALIDADOS', None)
-        self.total_failed_credits = kwargs.get('TOTAL CRÉDITOS REPROBADOS', None)
-        self.total_enrolled_credits = kwargs.get('TOTAL CRÉDITOS INSCRITOS', None)
-        self.elimination_causals_number = kwargs.get('N° CAUSALES ELIMINACIÓN (POR SEMESTRE)', None)
+        self.total_approved_credits = kwargs.get(
+            'TOTAL CRÉDITOS APROBADOS', None)
+        self.total_validated_credits = kwargs.get(
+            'TOTAL CRÉDITOS CONVALIDADOS', None)
+        self.total_approved_and_validated_credits = kwargs.get(
+            'TOTAL CRÉDITOS APROBADOS+CONVALIDADOS', None)
+        self.total_failed_credits = kwargs.get(
+            'TOTAL CRÉDITOS REPROBADOS', None)
+        self.total_enrolled_credits = kwargs.get(
+            'TOTAL CRÉDITOS INSCRITOS', None)
+        self.elimination_causals_number = kwargs.get(
+            'N° CAUSALES ELIMINACIÓN (POR SEMESTRE)', None)
         self.valid_studies = kwargs.get('ESTUDIOS VIGENTES(PARALELO)', None)
-        self.invalid_studies = kwargs.get('ESTUDIOS NO VIGENTES(FINALIZADOS POR ALGÚN MOTIVO)', None)
+        self.invalid_studies = kwargs.get(
+            'ESTUDIOS NO VIGENTES(FINALIZADOS POR ALGÚN MOTIVO)', None)
         self.licensed = kwargs.get('LICENCIADO', None)
         self.licensed_at = kwargs.get('FECHA LIC.', None)
         self.graduated = kwargs.get('EGRESADO', None)
@@ -50,8 +79,10 @@ class StudentRaw:
         self.admission_ranking = kwargs.get('PUESTO', None)
         StudentRaw.all.append(self)
 
+
 class CourseInstanceRaw:
     all = []
+
     def __init__(self, **kwargs):
         self.rut = kwargs.get('RUT', None)
         self.student_number = kwargs.get('N°ALUMNO', None)
@@ -59,10 +90,12 @@ class CourseInstanceRaw:
         self.admission_year = kwargs.get('AÑO ADMISIÓN', None)
         self.program_code = kwargs.get('PROGRAMA CODIGO', None)
         self.program = kwargs.get('PROGRAMA', None)
-        self.selected_major_code = kwargs.get('MAJOR CODIGO SELECCIONADO', None)
+        self.selected_major_code = kwargs.get(
+            'MAJOR CODIGO SELECCIONADO', None)
         self.selected_major = kwargs.get('MAJOR SELECCIONADO', None)
         self.track = kwargs.get('MAJOR TRACK/ÁREA ', None)
-        self.selected_minor_code = kwargs.get('MINOR CODIGO SELECCIONADO', None)
+        self.selected_minor_code = kwargs.get(
+            'MINOR CODIGO SELECCIONADO', None)
         self.selected_minor = kwargs.get('MINOR SELECCIONADO', None)
         self.student_credits = kwargs.get('CREDITOS ALUMNO', None)
         self.curriculum_course = kwargs.get('CURSO CURRICULUM', None)
@@ -80,6 +113,7 @@ class CourseInstanceRaw:
         self.admission_way = kwargs.get('VIA INGRESO', None)
         self.admission_case_way = kwargs.get('VIA CASO INGRESO', None)
         CourseInstanceRaw.all.append(self)
+
 
 if __name__ == '__main__':
     print("This module doesn't run code. Try running the 'main.py' file!")

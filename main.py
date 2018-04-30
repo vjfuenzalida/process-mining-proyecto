@@ -38,13 +38,19 @@ def dump_data():
         json.dump(data, course_objects_file)
 
 
-if __name__ == '__main__':
-    # dump_data()
+def load_objects():
     with open('processed_data/student_objects.json', 'r', encoding='utf-8') as student_objects_file:
         data = json.load(student_objects_file)
         objects = [Student(datum) for datum in data]
         Student.all = objects
-        # FINDS STUDENTS WITH A SPECIFIC ADMISSION WAY
-        admission_ways = set(map(lambda s: s.admission_way, Student.all))        
-        from_regular_admission = filter(lambda s: s.admission_way == 'ORDINARIA PAA', Student.all)
-        print(len(list(map(lambda s: s.rut, from_regular_admission))))
+    with open('processed_data/course_objects.json', 'r', encoding='utf-8') as course_objects_file:
+        data = json.load(course_objects_file)
+        objects = [CourseInstance(datum) for datum in data]
+        CourseInstance.all = objects
+
+
+if __name__ == '__main__':
+    # dump_data()
+    load_objects()
+    print(Student.filter_by('admission_way', 'ORDINARIA PAA'))
+    print(CourseInstance.filter_by('initials', 'ING1004'))
