@@ -24,6 +24,48 @@ class CourseInstance:
 class StudentRaw:
     all = []
 
+    prop_names = {
+        'RUT': 'rut',
+        'N°ALUMNO': 'student_number',
+        'CURRICULUM': 'curriculum',
+        'CODIGO PROGRAMA': 'program_code',
+        'PROGRAMA': 'program',
+        'CODIGO PREFERENCIA ESPECIALIDAD': 'specialty_preference_code',
+        'PREFERENCIA ESPECIALIDAD': 'specialty_preference',
+        'CODIGO PREFERENCIA MAJOR': 'major_preference_code',
+        'PREFERENCIA MAJOR': 'major_preference',
+        'CODIGO MAJOR SELECCIONADO': 'selected_major_code',
+        'MAJOR SELECCIONADO': 'selected_major',
+        'CODIGO MINOR SELECCIONADO': 'selected_minor_code',
+        'MINOR SELECCIONADO': 'selected_minor',
+        'TRACK/ÁREA': 'track',
+        'PLAN DE ESTUDIOS PERSONALIZADO': 'customized_studies_plan',
+        'ESTADO': 'state',
+        'AÑO INGRESO': 'admission_year',
+        'VÍA DE INGRESO': 'admission_way',
+        'TIPO INGRESO ESPECIAL': 'special_admission_type',
+        'PROM. PPA': 'ppa',
+        'TOTAL CRÉDITOS APROBADOS': 'total_approved_credits',
+        'TOTAL CRÉDITOS CONVALIDADOS': 'total_validated_credits',
+        'TOTAL CRÉDITOS APROBADOS+CONVALIDADOS': 'total_approved_and_validated_credits',
+        'TOTAL CRÉDITOS REPROBADOS': 'total_failed_credits',
+        'TOTAL CRÉDITOS INSCRITOS': 'total_enrolled_credits',
+        'N° CAUSALES ELIMINACIÓN (POR SEMESTRE)': 'elimination_causals_number',
+        'ESTUDIOS VIGENTES(PARALELO)': 'valid_studies',
+        'ESTUDIOS NO VIGENTES(FINALIZADOS POR ALGÚN MOTIVO)': 'invalid_studies',
+        'LICENCIADO': 'licensed',
+        'FECHA LIC.': 'licensed_at',
+        'EGRESADO': 'graduated',
+        'FECHA EGR.': 'graduated_at',
+        'TITULADO': 'tituled',
+        'COLEGIO REGIÓN': 'school_region',
+        'COLEGIO TIPO': 'school_type',
+        'COLEGIO EGRESO': 'school_of_graduation',
+        'ESTADO DSRD ACTUAL': 'dsrd_current_state',
+        'TIPO INGRESO': 'admission_type',
+        'PUESTO': 'admission_ranking',
+    }
+
     def __init__(self, **kwargs):
         self.rut = kwargs.get('RUT', None)
         self.student_number = kwargs.get('N°ALUMNO', None)
@@ -83,6 +125,35 @@ class StudentRaw:
 class CourseInstanceRaw:
     all = []
 
+    prop_names = {
+        'RUT': 'rut',
+        'N°ALUMNO': 'student_number',
+        'SEXO': 'sexo',
+        'AÑO ADMISIÓN': 'admission_year',
+        'PROGRAMA CODIGO': 'program_code',
+        'PROGRAMA': 'program',
+        'MAJOR CODIGO SELECCIONADO': 'selected_major_code',
+        'MAJOR SELECCIONADO': 'selected_major',
+        'MAJOR TRACK/ÁREA ': 'track',
+        'MINOR CODIGO SELECCIONADO': 'selected_minor_code',
+        'MINOR SELECCIONADO': 'selected_minor',
+        'CREDITOS ALUMNO': 'student_credits',
+        'CURSO CURRICULUM': 'curriculum_course',
+        'CURSO PROGRAMA': 'program_course',
+        'AÑO': 'year',
+        'SEMESTRE': 'semester',
+        'SIGLA': 'initials',
+        'SECCIÓN': 'section',
+        'NOMBRE CURSO': 'course_name',
+        'CREDITOS CURSO': 'course_credits',
+        'NOTA FINAL': 'final_grade',
+        'NOTA FINAL ALFA': 'alpha_final_grade',
+        'PPA Global': 'global_ppa',
+        'Estado en DARA': 'dara_state',
+        'VIA INGRESO': 'admission_way',
+        'VIA CASO INGRESO': 'admission_case_way',
+    }
+
     def __init__(self, **kwargs):
         self.rut = kwargs.get('RUT', None)
         self.student_number = kwargs.get('N°ALUMNO', None)
@@ -117,77 +188,6 @@ class CourseInstanceRaw:
 
 if __name__ == '__main__':
     print("This module doesn't run code. Try running the 'main.py' file!")
-
-    # student_prop_names = {
-    #     'RUT': 'rut',
-    #     'N°ALUMNO': 'student_number',
-    #     'CURRICULUM': 'curriculum',
-    #     'CODIGO PROGRAMA': 'program_code',
-    #     'PROGRAMA': 'program',
-    #     'CODIGO PREFERENCIA ESPECIALIDAD': 'specialty_preference_code',
-    #     'PREFERENCIA ESPECIALIDAD': 'specialty_preference',
-    #     'CODIGO PREFERENCIA MAJOR': 'major_preference_code',
-    #     'PREFERENCIA MAJOR': 'major_preference',
-    #     'CODIGO MAJOR SELECCIONADO': 'selected_major_code',
-    #     'MAJOR SELECCIONADO': 'selected_major',
-    #     'CODIGO MINOR SELECCIONADO': 'selected_minor_code',
-    #     'MINOR SELECCIONADO': 'selected_minor',
-    #     'TRACK/ÁREA': 'track',
-    #     'PLAN DE ESTUDIOS PERSONALIZADO': 'customized_studies_plan',
-    #     'ESTADO': 'state',
-    #     'AÑO INGRESO': 'admission_year',
-    #     'VÍA DE INGRESO': 'admission_way',
-    #     'TIPO INGRESO ESPECIAL': 'special_admission_type',
-    #     'PROM. PPA': 'ppa',
-    #     'TOTAL CRÉDITOS APROBADOS': 'total_approved_credits',
-    #     'TOTAL CRÉDITOS CONVALIDADOS': 'total_validated_credits',
-    #     'TOTAL CRÉDITOS APROBADOS+CONVALIDADOS': 'total_approved_and_validated_credits',
-    #     'TOTAL CRÉDITOS REPROBADOS': 'total_failed_credits',
-    #     'TOTAL CRÉDITOS INSCRITOS': 'total_enrolled_credits',
-    #     'N° CAUSALES ELIMINACIÓN (POR SEMESTRE)': 'elimination_causals_number',
-    #     'ESTUDIOS VIGENTES(PARALELO)': 'valid_studies',
-    #     'ESTUDIOS NO VIGENTES(FINALIZADOS POR ALGÚN MOTIVO)': 'invalid_studies',
-    #     'LICENCIADO': 'licensed',
-    #     'FECHA LIC.': 'licensed_at',
-    #     'EGRESADO': 'graduated',
-    #     'FECHA EGR.': 'graduated_at',
-    #     'TITULADO': 'tituled',
-    #     'COLEGIO REGIÓN': 'school_region',
-    #     'COLEGIO TIPO': 'school_type',
-    #     'COLEGIO EGRESO': 'school_of_graduation',
-    #     'ESTADO DSRD ACTUAL': 'dsrd_current_state',
-    #     'TIPO INGRESO': 'admission_type',
-    #     'PUESTO': 'admission_ranking',
-    # }
-
-    # course_prop_names = {
-    #     'RUT': 'rut',
-    #     'N°ALUMNO': 'student_number',
-    #     'SEXO': 'sexo',
-    #     'AÑO ADMISIÓN': 'admission_year',
-    #     'PROGRAMA CODIGO': 'program_code',
-    #     'PROGRAMA': 'program',
-    #     'MAJOR CODIGO SELECCIONADO': 'selected_major_code',
-    #     'MAJOR SELECCIONADO': 'selected_major',
-    #     'MAJOR TRACK/ÁREA ': 'track',
-    #     'MINOR CODIGO SELECCIONADO': 'selected_minor_code',
-    #     'MINOR SELECCIONADO': 'selected_minor',
-    #     'CREDITOS ALUMNO': 'student_credits',
-    #     'CURSO CURRICULUM': 'curriculum_course',
-    #     'CURSO PROGRAMA': 'program_course',
-    #     'AÑO': 'year',
-    #     'SEMESTRE': 'semester',
-    #     'SIGLA': 'initials',
-    #     'SECCIÓN': 'section',
-    #     'NOMBRE CURSO': 'course_name',
-    #     'CREDITOS CURSO': 'course_credits',
-    #     'NOTA FINAL': 'final_grade',
-    #     'NOTA FINAL ALFA': 'alpha_final_grade',
-    #     'PPA Global': 'global_ppa',
-    #     'Estado en DARA': 'dara_state',
-    #     'VIA INGRESO': 'admission_way',
-    #     'VIA CASO INGRESO': 'admission_case_way',
-    # }
 
     # for k, v in course_prop_names.items():
     #   print("self.{} = kwargs.get('{}', None)".format(v, k))
