@@ -8,16 +8,22 @@ def get_activity(taken, approved, accumulated):
         if taken == 0:
             return None
         else:
-            return "Qualified to take the exam. 16/16 (100%) completed"
+            return "Qualified. 100% completed"
     # NO TOMÓ CURSOS
     elif taken == 0:
-        return "No requirements taken this semester"
-    # TOMÓ CURSOS Y PROGRESÓ
-    elif taken > 0 and approved > 0:
-        return "Approved new requirements. {}/16 ({}%) completed".format(accumulated, percentage)
-    # TOMÓ CURSOS Y NO PROGRESÓ
-    elif taken > 0 and approved == 0:
-        return "No approved requirements. {}/16 ({}%) completed".format(accumulated, percentage)
+        return "No taken courses"
+    # TOMÓ CURSOS
+    elif taken > 0:
+        if percentage <= 20:
+            return "Approved. 1-20%"
+        elif percentage <= 40:
+            return "Approved. 21-40%"
+        elif percentage <= 60:
+            return "Approved. 41-60%"            
+        elif percentage <= 80:
+            return "Approved. 61-80%"
+        elif percentage <= 99:
+            return "Approved. 81-99%"                      
 
 
 def timestamp_before(date, days):

@@ -157,8 +157,7 @@ if __name__ == '__main__':
             end_date = timestamp_after(last_progress['end_timestamp'], 2)
             accumulated = last_progress['accumulated']
             percentage = last_progress['percentage']
-            unqualified_activity = "Not qualified to take the exam. {}/16 ({}%) completed".format(
-                accumulated, percentage)
+            unqualified_activity = "Not qualified. < 100%"
             incomplete_requirements_log = "{},{},{},{}\n".format(
                 student.student_number, start_date, end_date, unqualified_activity)
             logs.append(incomplete_requirements_log)
