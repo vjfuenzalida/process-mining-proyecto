@@ -1,23 +1,23 @@
 from collections import defaultdict
 
 
-def get_activity(taken, approved, accumulated):
+def get_activity(taken, approved, accumulated, semester):
     # LISTO
     percentage = accumulated * 100 / 16
     if accumulated == 16:
         if taken == 0:
             return None
         else:
-            return "Qualified to take the exam. 16/16 (100%) completed"
+            return "Qualified ({}). 16/16".format(semester)
     # NO TOMÓ CURSOS
     elif taken == 0:
-        return "No requirements taken this semester"
+        return "No requirements taken ({}). {}/16".format(semester, accumulated)
     # TOMÓ CURSOS Y PROGRESÓ
     elif taken > 0 and approved > 0:
-        return "Approved new requirements. {}/16 ({}%) completed".format(accumulated, percentage)
+        return "Approved Reqs ({}). {}/16".format(semester, accumulated)
     # TOMÓ CURSOS Y NO PROGRESÓ
     elif taken > 0 and approved == 0:
-        return "No approved requirements. {}/16 ({}%) completed".format(accumulated, percentage)
+        return "No approved Reqs. ({}). {}/16".format(semester, accumulated)
 
 
 def timestamp_before(date, days):
@@ -77,9 +77,13 @@ class Student:
             if accumulated == 16:
               self.requirements_ready = True
               self.requirements_ready_at = semester_number
+            semester_name = "{}º SEM".format(semester_number - int(semester_number / 3))
+            if semester_number % 3 == 0:
+                semester_name = "{}º TAV".format(int(semester_number / 3))
             progresses.update(
                 {semester: {
                     "semester": semester,
+                    "semester_name": semester_name,
                     "percentage": percentage,
                     "approved": approved,
                     "failed": failed,
@@ -90,7 +94,7 @@ class Student:
                     "semester_end": end_timestamp,
                     "start_timestamp": timestamp_after(end_timestamp, 3),
                     "end_timestamp": timestamp_after(end_timestamp, 4),
-                    "activity": get_activity(taken, approved, accumulated)
+                    "activity": get_activity(taken, approved, accumulated, semester_name)
                 }})
         return progresses
 

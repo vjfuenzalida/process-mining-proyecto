@@ -134,14 +134,8 @@ if __name__ == '__main__':
             last_progress = data
             activity_log = "{},{},{},{}\n".format(
                 student.student_number, data['start_timestamp'], data['end_timestamp'], activity)
-
-            tav_semester = False    
-            semester_activity = "End of semester {}".format(
-                semester_number - int(semester_number / 3))
-            if semester_number % 3 == 0:
-                semester_activity = "End of TAV semester {}".format(
-                    int(semester_number / 3))
-                tav_semester = True
+            semester_activity = "End of {}".format(data['semester_name'])
+            tav_semester = semester_number % 3 == 0
             semester_start = data['semester_start']
             semester_end = data['semester_end']
             semester_log = "{},{},{},{}\n".format(
@@ -157,8 +151,8 @@ if __name__ == '__main__':
             end_date = timestamp_after(last_progress['end_timestamp'], 2)
             accumulated = last_progress['accumulated']
             percentage = last_progress['percentage']
-            unqualified_activity = "Not qualified to take the exam. {}/16 ({}%) completed".format(
-                accumulated, percentage)
+            unqualified_activity = "Not qualified (at sem {}). {}/16".format(
+                10,accumulated)
             incomplete_requirements_log = "{},{},{},{}\n".format(
                 student.student_number, start_date, end_date, unqualified_activity)
             logs.append(incomplete_requirements_log)
